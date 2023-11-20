@@ -14,7 +14,7 @@
 .scene .card {
   position: relative;
   width: 300px;
-  height: 450px;
+  height: 420px;
   color: white;
   cursor: pointer;
   transition: 1s ease-in-out;
@@ -25,24 +25,51 @@
   transform: rotateY(0.5turn);
 }
 
-.scene .card .card__face {
+
+  
+/* Estilos generales para las tarjetas */
+.scene {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se ajusten según el ancho disponible */
+  justify-content: center; /* Centra las tarjetas en la escena */
+  gap: 20px; /* Espacio entre tarjetas */
+}
+
+.card {
+  position: relative;
+  width: 240px; /* Ancho fijo para dispositivos más grandes */
+  height: 300px; /* Altura fija para dispositivos más grandes */
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.card__face {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  transition: 1s ease-in-out;
-  -webkit-box-reflect: below 0 linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
 }
 
-.scene .card .card__face img {
-  width: 300px;
-  height: 450px;
-  object-fit: cover;
+.card__face--back {
+  transform: rotateY(180deg);
 }
 
-.scene .card .card__face--back {
-  transform: rotateY(0.5turn);
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
-  
+
+/* Media Queries para ajustar en dispositivos más pequeños */
+@media (max-width: 768px) {
+  .card {
+    width: 200px; /* Ancho más pequeño para pantallas estrechas */
+    height: 250px; /* Altura ajustada */
+  }
+}
+
+@media (max-width: 480px) {
+  .scene {
+    flex-direction: column; /* Apila las tarjetas verticalmente en pantallas muy pequeñas */
+  }
+}
